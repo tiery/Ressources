@@ -8,7 +8,7 @@ Modèle de base pour la création de tout nouveau plugin jQuery
 -------------
 $.fn.pluginName.defaults.default1 = 'toto';
 
-$(element).pluginName({
+$(element/selector).pluginName({
     option1: 'value1',
     option2: 2
     // ... 
@@ -49,13 +49,12 @@ $(element).pluginName({
     
     // Déclaration d'une méthode public liée au plugin
     $.fn.pluginName.publicMethod = function (params) {
-        /* ... */
+        /* noyau de la fonction */
     };
     
     // Donne accès aux paramètres par défaut du plugin
     $.fn.pluginName.defaults = {
-        default1: 'default1',
-        default2: 0
+        /* liste des paramètres par défaut */
     };
 
 })(jQuery);
