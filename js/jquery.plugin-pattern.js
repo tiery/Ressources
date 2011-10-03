@@ -1,19 +1,19 @@
 /*
- 
- # Description
- -------------
- Modèle de base pour la création de tout nouveau plugin jQuery
 
- # Utilisation
- -------------
- $.fn.pluginName.defaults.default1 = 'toto';
- 
- $(element).pluginName({
+# Description
+-------------
+Modèle de base pour la création de tout nouveau plugin jQuery
+
+# Utilisation
+-------------
+$.fn.pluginName.defaults.default1 = 'toto';
+
+$(element).pluginName({
     option1: 'value1',
     option2: 2
     // ... 
- });
-    
+});
+
 */
  
 // Le point virgule placé au début du code permet de protéger le script
