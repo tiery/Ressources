@@ -18,7 +18,7 @@ $(element/selector).pluginName({
  
 // Le point virgule placé au début du code permet de protéger le script
 // lorsqu'il est mixé avec d'autres scripts qui seraient mal formés
-;(function($) {
+(function($) {
     
     // Déclaration du plugin
     $.fn.pluginName = function (options) {
