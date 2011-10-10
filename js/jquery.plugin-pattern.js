@@ -16,8 +16,8 @@ $(element/selector).pluginName({
 
 */
  
-// Le point virgule placé au début du code permet de protéger le script
-// lorsqu'il est mixé avec d'autres scripts qui seraient mal formés
+// On encapsule tout le plugin dans une IIFE (Immediately-Invoked Function Expression)
+// ce qui permet de "protéger" le plugin, de créer son propre scope et de bien récupérer jQuery dns $
 (function($) {
     
     // Déclaration du plugin
