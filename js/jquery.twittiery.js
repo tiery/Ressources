@@ -20,7 +20,7 @@
                 avat : '<aside class="avatar"><img src="%avat%" alt="" /></aside>',
                 itemWrap : '<li><article class="cf">%itemWrap%</article></li>',
                 item : '<div class="content">%item%</div>'
-        	}
+            }
         },
         baseUrl = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=';
 
@@ -42,23 +42,31 @@
         return tpl.replace('%' + tplType + '%', content);
     };
     
+    
     // Initialization logic
     Plugin.fn.init = function () {
         var that = this,
-            output = that.createTpl('user', that.defaults.user),
             url = baseUrl + this.defaults.user + '&count=' + this.defaults.count + '&callback=?';
         $(that.element).addClass('loading');
-        $.getJSON(url, function(res){
-            var temp = '';
-            for (var i=0, l=res.length; i<l; i++ ) {
-                var avat = that.createTpl('avat', res[i].user.profile_image_url),
-                    text = that.createTpl('item', res[i].text);
-                temp += that.createTpl('itemWrap', avat + text);
-            }
-            output += that.createTpl('list', temp);
-            that.element.innerHTML = output;
-            $(that.element).removeClass('loading');
+        var $getJSON = $.getJSON(url);
+        $getJSON.success(function(res){
+            that.JSONsuccess(res);
         });
+    };
+    
+    // Create output when json request success
+    Plugin.fn.JSONsuccess = function(res) {
+        var temp = '',
+            output = this.createTpl('user', this.defaults.user);
+        for (var i=0, l=res.length; i<l; i++ ) {
+            var avat = this.createTpl('avat', res[i].user.profile_image_url);
+            var text = this.createTpl('item', res[i].text);
+            
+            temp += this.createTpl('itemWrap', avat + text);
+        }
+        output += this.createTpl('list', temp);
+        this.element.innerHTML = output;
+        $(this.element).removeClass('loading');
     };
 
     // A really lightweight plugin wrapper around the constructor,
