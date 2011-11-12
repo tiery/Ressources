@@ -1,3 +1,34 @@
+/*
+ * Images preloader
+ * Author: @tiery_
+ *
+ * Requires: jQuery
+ *
+ * Arguments
+ * @arr {Array} Array of images to preload
+ * @events {Object} Events' functions (before, simpleSuccess, success)
+ *
+ * Events descritpions
+ * @before: trigger when Preloader has been initialized, before preloading images
+ * @simpleSuccess: trigger each time an image is successfully loaded
+ * @success: trigger when all images have been successfully loaded
+ */
+
+/*
+ * Example :
+ *
+ * var myPreloader = new Preloader(['image1.jpg', 'image2.jpg'], {
+ *     before: function(){
+ *
+ *     },
+ *     simpleSuccess: function(){
+ *
+ *     },
+ *     success: function(){
+ *
+ *     }
+ * });
+*/
 (function ($) {
 
     var Preloader = function (arr, events) {
@@ -40,7 +71,7 @@
      * Init function
      */
     Preloader.fn.init = function () {
-        this.events.before(this.l);
+        this.events.before.apply(this);
         this.simpleLoad();
     };
 
@@ -53,12 +84,12 @@
         if (that.loaded < that.l) {
             $(img).load(function () {
                 that.loaded++;
-                that.events.simpleSuccess(that.loaded);
+                that.events.simpleSuccess.apply(that);
                 that.simpleLoad();
             }).attr('src', that.arr[that.loaded]);
         }
         else {
-            that.events.success();
+            that.events.success.apply(that);
         }
     };
 
