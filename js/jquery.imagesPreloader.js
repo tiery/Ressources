@@ -30,7 +30,9 @@
  * });
 */
 (function ($) {
-
+    /*
+     * Preloader constructor
+     */
     var Preloader = function (arr, events) {
         /*
          * Si l'argument passé n'est pas un tableau

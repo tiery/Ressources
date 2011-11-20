@@ -47,7 +47,6 @@
     Plugin.fn.init = function () {
         var that = this,
             url = baseUrl + this.defaults.user + '&count=' + this.defaults.count + '&callback=?';
-        $(that.element).addClass('loading');
         var $getJSON = $.getJSON(url);
         $getJSON.success(function(res){
             that.JSONsuccess(res);
@@ -66,7 +65,6 @@
         }
         output += this.createTpl('list', temp);
         this.element.innerHTML = output;
-        $(this.element).removeClass('loading');
     };
 
     // A really lightweight plugin wrapper around the constructor,
