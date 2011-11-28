@@ -29,7 +29,7 @@
  *     }
  * });
 */
-(function ($) {
+(function (context, $) {
     /*
      * Preloader constructor
      */
@@ -96,8 +96,8 @@
     };
 
     /*
-     * Expose 'Preloader' to global object
+     * Expose 'Preloader' to context
      */
-    window.Preloader = Preloader;
+    context.Preloader = Preloader;
 
-}(jQuery));
+}(this, jQuery));
