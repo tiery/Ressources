@@ -17,51 +17,30 @@
 /*
  * Example :
  *
- * var myPreloader = new Preloader(['image1.jpg', 'image2.jpg'], {
- *     before: function(){
- *
- *     },
- *     simpleSuccess: function(){
- *
- *     },
- *     success: function(){
- *
- *     }
- * });
+ * var myPreloader = new Preloader(['image1.jpg', 'image2.jpg']);
+ * myPreloader.before        = function () {};
+ * myPreloader.simpleSuccess = function () {};
+ * myPreloader.success       = function () {};
+ *     
 */
 (function (context, $) {
     /*
      * Preloader constructor
      */
-    var Preloader = function (arr, events) {
+    var Preloader = function (arr) {
         /*
          * Si l'argument passé n'est pas un tableau
          */
-        if (!$.isArray(arr)) {
+        if (!arr || !$.isArray(arr)) {
             return;
         }
 
         /*
-         * Handle arguments
-         */
-        this.arr = arr;
-        this.events = {
-            before: function () {},
-            simpleSuccess: function () {},
-            success: function () {}
-        };
-        $.extend(this.events, events);
-
-        /*
          * Initial values
          */
-        this.loaded = 0;
+        this.arr = arr;
         this.l = this.arr.length;
-
-        /*
-         * Initializing
-         */
-        this.init();
+        this.loaded = 0;
     };
 
     /*
@@ -70,33 +49,47 @@
     Preloader.fn = Preloader.prototype;
 
     /*
-     * Init function
+     * Events functions
      */
-    Preloader.fn.init = function () {
-        this.events.before.apply(this);
-        this.simpleLoad();
-    };
+    Preloader.fn.before = function () {};
+    Preloader.fn.simpleSuccess = function () {};
+    Preloader.fn.success = function () {};
 
     /*
-     * Core function
+     * setLoad function
      */
-    Preloader.fn.simpleLoad = function () {
+    Preloader.fn.setLoad = function () {
         var that = this,
             img = new Image();
         if (that.loaded < that.l) {
-            $(img).load(function () {
-                that.loaded++;
-                that.events.simpleSuccess.apply(that);
-                that.simpleLoad();
+            $(img).load(function(){
+                that.simpleLoad.apply(that);
             }).attr('src', that.arr[that.loaded]);
         }
         else {
-            that.events.success.apply(that);
+            that.success.apply(that);
         }
+    };
+    
+    /*
+     * simpleLoad callback function
+     */
+    Preloader.fn.simpleLoad = function () {
+        this.simpleSuccess.apply(this, [this.loaded]);
+		this.loaded++;
+		this.setLoad();
+    };
+    
+    /*
+     * init function
+     */
+    Preloader.fn.init = function () {
+        this.before.apply(this, [this.arr]);
+        this.setLoad();
     };
 
     /*
-     * Expose 'Preloader' to context
+     * Expose 'Preloader' to execution context
      */
     context.Preloader = Preloader;
 
