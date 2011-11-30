@@ -76,8 +76,8 @@
      */
     Preloader.fn.simpleLoad = function () {
         this.simpleSuccess.apply(this, [this.loaded]);
-		this.loaded++;
-		this.setLoad();
+        this.loaded++;
+        this.setLoad();
     };
     
     /*
