@@ -6,7 +6,6 @@
  *
  * Arguments
  * @arr {Array} Array of images to preload
- * @events {Object} Events' functions (before, simpleSuccess, success)
  *
  * Events descritpions
  * @before: trigger when Preloader has been initialized, before preloading images
@@ -21,6 +20,7 @@
  * myPreloader.before        = function () {};
  * myPreloader.simpleSuccess = function () {};
  * myPreloader.success       = function () {};
+ * myPreloader.init();
  *     
 */
 (function (context, $) {
@@ -63,7 +63,7 @@
             img = new Image();
         if (that.loaded < that.l) {
             $(img).load(function(){
-                that.simpleLoad.apply(that);
+                that.simpleLoad.apply(that, [img]);
             }).attr('src', that.arr[that.loaded]);
         }
         else {
@@ -74,8 +74,8 @@
     /*
      * simpleLoad callback function
      */
-    Preloader.fn.simpleLoad = function () {
-        this.simpleSuccess.apply(this, [this.loaded]);
+    Preloader.fn.simpleLoad = function (img) {
+        this.simpleSuccess.apply(this, [this.loaded, img]);
         this.loaded++;
         this.setLoad();
     };
@@ -84,7 +84,7 @@
      * init function
      */
     Preloader.fn.init = function () {
-        this.before.apply(this, [this.arr]);
+        this.before.apply(this);
         this.setLoad();
     };
 
