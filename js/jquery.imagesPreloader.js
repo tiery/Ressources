@@ -63,11 +63,11 @@
             img = new Image();
         if (that.loaded < that.l) {
             $(img).load(function(){
-                that.simpleLoad.apply(that, [img]);
+                that.simpleLoad.call(that, img);
             }).attr('src', that.arr[that.loaded]);
         }
         else {
-            that.success.apply(that);
+            that.success.call(that);
         }
     };
     
@@ -75,7 +75,7 @@
      * simpleLoad callback function
      */
     Preloader.fn.simpleLoad = function (img) {
-        this.simpleSuccess.apply(this, [this.loaded, img]);
+        this.simpleSuccess.call(this, this.loaded, img);
         this.loaded++;
         this.setLoad();
     };
@@ -84,7 +84,7 @@
      * init function
      */
     Preloader.fn.init = function () {
-        this.before.apply(this);
+        this.before.call(this);
         this.setLoad();
     };
 
