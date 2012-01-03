@@ -15,7 +15,7 @@
 		this.init();
     }
     
-    Plugin.fn.init = Plugin.prototype.init;
+    Plugin.fn = Plugin.prototype;
 
     Plugin.fn.init = function() {
         // Let's go buddy
