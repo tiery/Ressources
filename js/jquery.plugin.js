@@ -1,6 +1,6 @@
 ;(function($) {
 
-    var pluginName = 'pxTab',
+    var pluginName = 'pluginName',
         defaults = {
             activeclass: 'active'
         };
