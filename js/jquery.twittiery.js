@@ -7,7 +7,7 @@
  * Displays a Twitter feed from one or more accounts
  */
 
-(function ($, win, doc, undefined) {
+(function ($) {
 
     // Create the defaults once
     var pluginName = 'twittiery',
@@ -78,4 +78,4 @@
         });
     };
 
-})(jQuery, window, document);
+})(jQuery);
