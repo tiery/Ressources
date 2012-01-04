@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+	<title></title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<!-- Mobile generic meta tags -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320"><!-- IE Mobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
+	<link rel="apple-touch-icon" href="img/apple-touch-icon-57x57.png"><!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices -->
+	<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png"><!-- first-generation iPad -->
+	<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png"><!-- Retina display -->
+	<link rel="shortcut icon" href="img/favicon.ico"><!-- Nokia devices -->
+	
+	<!-- iOS specific meta tags : http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-startup-image" href="img/l/splash.png">
+	
+	<!--the script prevents links from opening in mobile safari. https://gist.github.com/1042026-->
+	<script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
+	
+	<!-- Mobile IE - activate ClearType technology for smoothing fonts for easy reading -->
+	<meta http-equiv="cleartype" content="on">
+	
+	<!-- Stylesheets -->
+	<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile.structure-1.0.css"> -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css">
+	
+	
+	<!-- jQuery Mobile scripts -->
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.js"></script>
+</head>
+
+<body>
+
+	<div data-role="page"> 
+		<div data-role="header">HEADER</div>
+		<div data-role="content">CONTENT</div>
+		<div data-role="footer">FOOTER</div>
+	</div> 
+	
+	
+	<!-- scripts concatenated and minified via ant build script -->
+	<script src="js/libs/helpers.js"></script>
+	
+	<!-- Google analytic tag -->
+	<script type="text/javascript">
+	var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		//var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+
+</body>
+</html>
