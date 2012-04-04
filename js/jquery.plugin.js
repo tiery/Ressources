@@ -1,28 +1,31 @@
-;(function($) {
+/*
+ * [PLUGIN NAME]
+ * jQuery plugin
+ */
+(function ($) {
 
-    var pluginName = 'pluginName',
-        defaults = {
-            activeclass: 'active'
-        };
+    var pluginName = '',
+        defaults = {};
 
-    function Plugin(element, options) {
-        this.element = element;
-		this.options = $.extend({}, defaults, options) ;
-		
-		this._defaults = defaults;
-		this._name = pluginName;
-		
-		this.init();
-    }
+    // Plugin constructor
+    var Plugin = function (element, options) {
+        this.$element = $(element);
+        this.opts = $.extend({}, defaults, options);
+        this.init();
+    };
     
+    // Shortcut for Plugin object prototype
     Plugin.fn = Plugin.prototype;
-
-    Plugin.fn.init = function() {
-        // Let's go buddy
+    
+    // Initialization logic
+    Plugin.fn.init = function () {
+        var that = this;
     };
 
-    $.fn[pluginName] = function(options) {
-        return this.each(function() {
+    // Plugin wrapper around the constructor,
+    // preventing against multiple instantiations
+    $.fn[pluginName] = function (options) {
+        return this.each(function () {
             if (!$.data(this, 'plugin_' + pluginName)) {
                 $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
             }
