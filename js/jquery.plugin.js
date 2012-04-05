@@ -9,9 +9,10 @@
 
     // Plugin constructor
     var Plugin = function (element, options) {
-        this.$element = $(element);
-        this.opts = $.extend({}, defaults, options);
-        this.init();
+        var that = this;
+        that.$element = $(element);
+        that.opts = $.extend({}, defaults, options);
+        that.init();
     };
     
     // Shortcut for Plugin object prototype
