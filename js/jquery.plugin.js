@@ -21,6 +21,8 @@
     // Initialization logic
     Plugin.fn.init = function () {
         var that = this;
+        // DOM Elements
+        // Element specific variables
     };
 
     // Plugin wrapper around the constructor,
