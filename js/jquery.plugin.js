@@ -16,7 +16,7 @@
         // DOM elements
         this.$element = $(element).attr('data-plugin-id', pluginName + i);
 
-        // Relate slider plugin
+        // Related plugin
         // this.Slider = window[this.$element.find('[data-slider="element"]').attr('data-plugin-id')];
 
         // Properties
