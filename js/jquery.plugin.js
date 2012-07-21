@@ -4,7 +4,7 @@
  */
 (function ($) {
 
-	var pluginName = '',
+	var pluginName = '[PLUGIN NAME]',
 		defaults = {};
 
 	// Plugin constructor
@@ -23,7 +23,7 @@
 		// this.id = this.$element.attr('data-slideshow-id');
 
 		// Defaults -> options
-		var elOpts = this.$element.data('slider-options') || {};
+		var elOpts = this.$element.data('[PLUGIN NAME]-options') || {};
 		var opts   = $.extend({}, options, elOpts); // element options -> (plugin init) options
 		this.opts  = $.extend({}, defaults, opts); // options -> default
 
