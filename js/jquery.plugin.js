@@ -37,9 +37,6 @@
 	// Initialization logic
 	Plugin.fn.init = function () {
 		var that = this;
-		
-		// Events init
-		that.events();
 	};
 
 	// Plugin wrapper around the constructor,
