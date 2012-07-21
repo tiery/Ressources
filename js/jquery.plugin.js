@@ -1,6 +1,6 @@
 /*
  * [PLUGIN NAME]
- * jQuery plugin
+ * Provide a quick description of this jQuery plugin
  */
 (function ($) {
 
