@@ -5,33 +5,45 @@
 
     'use strict';
 
-    // Params
+    /*
+     * Params
+     */
     var pluginName = '[plugin_name]',
         defaults = {};
         
-    // Plugin constructor
+    /*
+     * Plugin constructor
+     */
     var Plugin = function (element, options, i) {
         
         // Plugin exposed to window
+        /* window[pluginName + i] = this; */
         
-        // DOM elements
-        this.$element = $(element).attr('data-' + pluginName + '-id', pluginName + i);
-                
-        // Properties
-        this.[property_name] = [property_value];
+        // Main element
+        this.$element = $(element).attr('data-' + pluginName + '-id', pluginName + i).addClass(pluginName.toLowerCase() + '-init');
         
         // Options
         var opts  = $.extend({}, options, this.$element.data(pluginName + '-options')); // element options -> plugin init options
         this.opts = $.extend({}, defaults, opts); // options -> default
         
+        // DOM elements
+        /* this.$items    = this.$element.find('li'); */
+                
+        // Properties
+        /* this.status   = 'wait'; // wait | busy */
+        
         // Go!
         this.init();
     };
     
-    // Shortcut for Plugin object prototype
+    /*
+     * Shortcut for Plugin object prototype
+     */
     Plugin.fn = Plugin.prototype;
     
-    // Initialization logic
+    /*
+     * Initialization logic
+     */
     Plugin.fn.init = function () {
         var that = this;
         
@@ -39,7 +51,9 @@
         that.events();
     };
     
-    // Evenements
+    /*
+     * Evenements
+     */
     Plugin.fn.events = function () {
         var that = this;
     };
